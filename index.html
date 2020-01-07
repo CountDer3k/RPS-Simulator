@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <title>Rock, Paper, Scissor Simulator!</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- My Linked JS & Css Files -->
+        <link rel="stylesheet" href="resources/rpsCss.css">
+    </head>
+    <body class="bodyTag" onload="diffSelector()">
+        <br />
+        <div id="gameScreen" class="container invisible">
+            <!-- Logo Area -->
+            <div class="text-center">
+                <img id="logoIMG" class="img4" src="resources/images/logo_1.png" alt="Image of Rock Paper Scissor Logo" height="150" width="200">
+                <h1 id="gameTitle">RPS Simulator</h1>
+                
+                <h2 id="winLabel">Press any button to begin</h2>
+                <button id="newGameButton" class="btn btn-danger hideMe" onclick="startNewGame()">New Game</button>
+            </div>
+            <br /><br />
+            <!-- Play area -->
+            <div class="row">
+                <!-- Player Side -->
+                <div class="col-lg-3">
+                    <h2>Player Score: </h2>
+                    <h2 id="pScore">0</h2>
+                    <br />
+                    <button class="btn" id="rockButton" onclick="imageClick(1)"><img src="resources/images/1.png" alt="Rock" width="50" height="50">Rock</button>
+                    <br />
+                    <button class="btn" id="paperButton" onclick="imageClick(2)"><img src="resources/images/2.png" alt="Paper" width="50" height="50">Paper</button>
+                    <br />
+                    <button class="btn" id="scissorButton" onclick="imageClick(3)"><img src="resources/images/3.png" alt="Scissors" width="50" height="50">Scissor</button>
+                </div>
+                <!-- Middle Images Area -->
+                <div class="col-lg-6">
+                    <br /><br /><br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img id="pIMG" src="resources/images/3.png" alt="AI Image" height="200" width="200">
+                        </div>
+                        <div class="col-sm-6">
+                            <img id="aiIMG" src="resources/images/1.png" alt="Player Image" height="200" width="200">
+                        </div>
+                    </div>
+                </div>
+                <!-- AI Side -->
+                <div class="col-lg-3 text-right">
+                    <h2>AI Score: </h2>
+                    <h2 id="aiScore">0</h2>
+                    <br />
+                    <label id="rockLabel"><img src="resources/images/1.png" alt="Rock" width="50" height="50">Rock</label>
+                    <br />
+                    <label id="paperLabel"><img src="resources/images/2.png" alt="Paper" width="50" height="50">Paper</label>
+                    <br />
+                    <label id="scissorLabel"><img src="resources/images/3.png" alt="Scissors" width="50" height="50">Scissor</label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="gameScreenBottom" class="container invisible">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 text-center">
+                    <button class="btn btn-warning" onclick="changeDiff()" id="diffBtn">Difficulty: Easy</button>
+                    <h5>Rounds: </h5>        
+                    <h5 id="countLabel">0</h5>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+        <!-- Brand New Game Screen -->
+        <div id="newGameScreen" class="container">
+            <button id="firstGameButton" class="btn btn-lg btn-success">New Game</button>
+        </div>
+
+
+
+        <!-- Modal Below this line-->
+        <div class="modal" id="mainModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Difficulty Selection</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label>Select Difficulty Level: </label>
+                    <!-- Add Radio Buttons Here -->
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+    <script type="text/javascript" src="resources/rpsScripts.js"></script>
+    </body>
+    <footer class="footerTag">
+        <div class="text-center">
+            <label id="footerDescription">Rock, Paper, Scissor (RPS) Simulator © Der3k Burrola</label>
+        </div>
+    </footer>
+</html>

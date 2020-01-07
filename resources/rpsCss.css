@@ -1,0 +1,19 @@
+.hideMe{
+    visibility: hidden;
+}
+.bodyTag{
+    background-color: darkolivegreen;
+}
+.footerTag{
+    background-color: olivedrab;
+}
+
+/* 
+
+
+Make Logo Half the size and Name to the right of Logo
+Make Logo be left centered
+do a shrink to phone size that switches screen to be 2 columns with the images below player & AI 
+
+
+*/
