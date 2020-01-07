@@ -81,6 +81,7 @@ function winStatusAction(pS, aS){
         updateBoard("aiScore", "AI Wins!", false);
     }
     setImages(parseInt(pS), parseInt(aS));
+    setProgress();
     isGameOver();
 }
 /* Updates all of the board labels */
@@ -100,6 +101,18 @@ function setImages(p, a){
     document.getElementById("pIMG").src=imagePath;
     imagePath = "resources/images/" + a + ".png";
     document.getElementById("aiIMG").src=imagePath;
+}
+/* Updates the progress bars */
+function setProgress(){
+    var gameWin = 5;
+    var p = parseInt(document.getElementById("pScore").innerHTML);
+    var a = parseInt(document.getElementById("aiScore").innerHTML);
+    var pPer = "width: " + ((p/gameWin)*100) + "%";
+    var aPer = "width: " + ((a/gameWin)*100) + "%";
+    document.getElementById("pProgressBar").style=pPer;
+    document.getElementById("pProgressBar").innerHTML = p + "/5";
+    document.getElementById("aiProgressBar").style=aPer;
+    document.getElementById("aiProgressBar").innerHTML = a + "/5";
 }
 //--------------------
 // Game Over Functions
@@ -137,6 +150,7 @@ function startNewGame(){
         document.getElementById("pScore").innerHTML = "0";
         document.getElementById("countLabel").innerHTML = "0";
         document.getElementById("winLabel").innerHTML = "Press any button to begin";
+        setProgress();
         // Set starting Images
         setImages(3, 1);
         // Toggles all buttons
