@@ -8,8 +8,31 @@
     background-color: olivedrab;
 }
 
-/* 
 
+@media only screen and (max-width: 1000px){
+    .bodyTag{
+        background-color: darkcyan;
+    }
+    .LogoArea{
+        height: 200px;
+    }
+    .PlayerArea{
+        height: 300px;
+        width: 200px;
+    }
+    .imageArea{
+        height: 260px;
+    }
+    .AIArea{
+        height: 300px;
+        width: 200px;
+    }
+    .mainImages{
+        height: 100px;
+        width: 100px;
+    }
+}
+/* 
 
 Make Logo Half the size and Name to the right of Logo
 Make Logo be left centered

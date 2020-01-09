@@ -14,7 +14,7 @@
         <br />
         <div id="gameScreen" class="container invisible">
             <!-- Logo Area -->
-            <div class="text-center">
+            <div class="LogoArea text-center">
                 <img id="logoIMG" class="img4" src="resources/images/logo_1.png" alt="Image of Rock Paper Scissor Logo" height="150" width="200">
                 <h1 id="gameTitle">RPS Simulator!</h1>
                 
@@ -25,7 +25,7 @@
             <!-- Play area -->
             <div class="row">
                 <!-- Player Side -->
-                <div class="col-lg-3">
+                <div class="PlayerArea col-lg-3">
                     <h2>Player Score: </h2>
                     <h2 id="pScore">0</h2>
                     <div class="progress">
@@ -41,19 +41,19 @@
                     <button class="btn" id="scissorButton" onclick="imageClick(3)"><img src="resources/images/3.png" alt="Scissors" width="50" height="50">Scissor</button>
                 </div>
                 <!-- Middle Images Area -->
-                <div class="col-lg-6">
+                <div class="imageArea col-lg-6">
                     <br /><br /><br />
                     <div class="row">
                         <div class="col-sm-6">
-                            <img id="pIMG" src="resources/images/3.png" alt="AI Image" height="200" width="200">
+                            <img id="pIMG" class="mainImages" src="resources/images/3.png" alt="AI Image" height="200" width="200">
                         </div>
                         <div class="col-sm-6">
-                            <img id="aiIMG" src="resources/images/1.png" alt="Player Image" height="200" width="200">
+                            <img id="aiIMG" class="mainImages" src="resources/images/1.png" alt="Player Image" height="200" width="200">
                         </div>
                     </div>
                 </div>
                 <!-- AI Side -->
-                <div class="col-lg-3 text-right">
+                <div class="AIArea col-lg-3 text-right">
                     <h2>AI Score: </h2>
                     <h2 id="aiScore">0</h2>
                     <div class="progress">

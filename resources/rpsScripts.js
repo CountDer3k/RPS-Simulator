@@ -1,10 +1,15 @@
 //----------------------
 // On Load Functions
 //----------------------
+let gameWin = 5;
+
+/* Called when the BODY tag loads on the page
+    Does any OnLoad needed actions */
 function diffSelector(){
     FirstGame();
-    //$('#mainModal').modal('show');   
 }
+/* Called when the page loads
+    Sets all the views (DIVs) to their starting visible/invisible setting */
 function FirstGame(){
     document.getElementById("gameScreen").classList.add("visible");
     document.getElementById("gameScreen").classList.remove("invisible");
@@ -16,10 +21,17 @@ function FirstGame(){
 //----------------------
 // Player Move Functions
 //---------------------- 
+/* Called on every turn & when difficulty has AI re-roll
+    returns a random number between 1 & 3 */
 function AIrandomization(){
     return (Math.floor(Math.random() * 3) + 1);
 }
-/* Gives a buff to the AI to increase difficulty */
+/* Called every single turn
+    Controls the diffculty of the game. 
+    Easy gets 1 roll
+    Medium gets 2 rolls
+    Hard gets 3 rolls
+    A roll is a random roll of which object is chosen.*/
 function difficultyBuff(p, a){
     var currentDiff = document.getElementById("diffBtn").innerHTML;
     if(currentDiff == "Difficulty: Easy"){
@@ -52,8 +64,9 @@ function difficultyBuff(p, a){
         }
     }
 }
-/* Returns the status of winner
-   0 = Tie, 1 = player, 2 = AI */
+/* Called when difficulty is higher than easy
+    Returns the status of winner without saying anyone has won.
+    0 = Tie, 1 = player, 2 = AI */
 function winStatus(pS, aS){
     var p = parseInt(pS);
     var a = parseInt(aS);
@@ -67,25 +80,27 @@ function winStatus(pS, aS){
         return 2;
     }
 }
-/* Does all actions needed to achieve the status of the winner */
+/* Called when player and AI have both chosen their final object
+    Does all actions needed to achieve the status of the winner */
 function winStatusAction(pS, aS){
     var p = parseInt(pS);
     var a = parseInt(aS);
     if(p == a) {
-        updateBoard(" ", "Tie!", true);
+        updateLabels(" ", "Tie!", true);
     }
     else if((a+1 == p) || (a == p+2)){
-        updateBoard("pScore", "You Win!", false);
+        updateLabels("pScore", "You Win!", false);
     }
     else if((a == p+1) || a+2 == p){
-        updateBoard("aiScore", "AI Wins!", false);
+        updateLabels("aiScore", "AI Wins!", false);
     }
     setImages(parseInt(pS), parseInt(aS));
     setProgress();
     isGameOver();
 }
-/* Updates all of the board labels */
-function updateBoard(pointMaker, winText, isTie){
+/* Called every turn
+    Updates all of the board labels */
+function updateLabels(pointMaker, winText, isTie){
     // Update win Label
     document.getElementById("winLabel").style.visibility="visible";
     document.getElementById("winLabel").innerHTML = winText;
@@ -95,16 +110,17 @@ function updateBoard(pointMaker, winText, isTie){
         document.getElementById(pointMaker).innerHTML = a + 1;
     }
 }
-/* Updates the board's images */
+/* Called every turn
+    Updates the board's images */
 function setImages(p, a){
     var imagePath = "resources/images/" + p + ".png";
     document.getElementById("pIMG").src=imagePath;
     imagePath = "resources/images/" + a + ".png";
     document.getElementById("aiIMG").src=imagePath;
 }
-/* Updates the progress bars */
+/* Called every turn
+    Updates the progress bars based on the player's and ai's scores */
 function setProgress(){
-    var gameWin = 5;
     var p = parseInt(document.getElementById("pScore").innerHTML);
     var a = parseInt(document.getElementById("aiScore").innerHTML);
     var pPer = "width: " + ((p/gameWin)*100) + "%";
@@ -117,19 +133,22 @@ function setProgress(){
 //--------------------
 // Game Over Functions
 //--------------------
+/* Called at the end of each turn.
+    Checks if any player has reached the gameWin score */
 function isGameOver(){
-    var gameWin = 5;
     var pS = document.getElementById("pScore").innerHTML;
     var aS = document.getElementById("aiScore").innerHTML;
-    if(pS == 5){
+    if(pS == gameWin){
         toggleDisable(false);
         // Modal saying that player won!
     }
-    else if (aS == 5){
+    else if (aS == gameWin){
         toggleDisable(false);
         // Modal saying that AI won!
     }
 }
+/* Called when a new game is begun or when the player's/ai's score reaches the game win score
+    toggles disable on player buttons & hides/unhides new game button */
 function toggleDisable(isNewGame){
     // Toggle Player selection buttons
     document.getElementById("rockButton").classList.toggle("disabled");
@@ -141,6 +160,8 @@ function toggleDisable(isNewGame){
 // ----------------
 // Button Functions
 // ----------------
+/* Called when the 'new game' button is pressed
+    clears all of the scores, reenables button pressed & clears images */
 function startNewGame(){
     var pS = document.getElementById("pScore").innerHTML;
     var aS = document.getElementById("aiScore").innerHTML;
@@ -157,6 +178,8 @@ function startNewGame(){
         toggleDisable(true);
     }
 }
+/* Called by the rock, paper, & scissor buttons
+   Handles the player's button click */
 function imageClick(pSel){
     var pS = document.getElementById("pScore").innerHTML;
     var aS = document.getElementById("aiScore").innerHTML;
@@ -166,6 +189,8 @@ function imageClick(pSel){
         difficultyBuff(pSel, aiSel);
     }
 }
+/* Called by the 'difficulty' button being pressed
+    Handles changing the difficulty level.*/
 function changeDiff(){
     var currentDiff = document.getElementById("diffBtn").innerHTML;
     var newDiff= "";
