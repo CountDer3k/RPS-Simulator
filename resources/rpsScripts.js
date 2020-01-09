@@ -113,10 +113,8 @@ function updateLabels(pointMaker, winText, isTie){
 /* Called every turn
     Updates the board's images */
 function setImages(p, a){
-    var imagePath = "resources/images/" + p + ".png";
-    document.getElementById("pIMG").src=imagePath;
-    imagePath = "resources/images/" + a + ".png";
-    document.getElementById("aiIMG").src=imagePath;
+    document.getElementById("pIMG").src=`resources/images/${p}.png`;
+    document.getElementById("aiIMG").src=`resources/images/${a}.png`;
 }
 /* Called every turn
     Updates the progress bars based on the player's and ai's scores */
@@ -140,11 +138,9 @@ function isGameOver(){
     var aS = document.getElementById("aiScore").innerHTML;
     if(pS == gameWin){
         toggleDisable(false);
-        // Modal saying that player won!
     }
     else if (aS == gameWin){
         toggleDisable(false);
-        // Modal saying that AI won!
     }
 }
 /* Called when a new game is begun or when the player's/ai's score reaches the game win score
@@ -184,25 +180,26 @@ function imageClick(pSel){
     var pS = document.getElementById("pScore").innerHTML;
     var aS = document.getElementById("aiScore").innerHTML;
     if(pS < 5 && aS < 5){
-        document.getElementById("countLabel").innerHTML = parseInt(document.getElementById("countLabel").innerHTML) + 1;
         var aiSel = AIrandomization();
         difficultyBuff(pSel, aiSel);
+        // Updates a label counting the total number of turns played
+        document.getElementById("countLabel").innerHTML = parseInt(document.getElementById("countLabel").innerHTML) + 1;
     }
 }
 /* Called by the 'difficulty' button being pressed
     Handles changing the difficulty level.*/
 function changeDiff(){
     var currentDiff = document.getElementById("diffBtn").innerHTML;
-    var newDiff= "";
+    var newDiff= "Difficulty: ";
     switch(currentDiff){
         case "Difficulty: Easy":
-            newDiff = "Difficulty: Medium";
+            newDiff = newDiff + "Medium";
             break;
         case "Difficulty: Medium":
-            newDiff = "Difficulty: Hard";
+            newDiff = newDiff + "Hard";
             break;
         case "Difficulty: Hard":
-            newDiff = "Difficulty: Easy";
+            newDiff = newDiff + "Easy";
             break;
     }
     document.getElementById("diffBtn").innerHTML = newDiff;

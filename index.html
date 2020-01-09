@@ -12,7 +12,7 @@
     </head>
     <body class="bodyTag" onload="diffSelector()">
         <br />
-        <div id="gameScreen" class="container invisible">
+        <div id="gameScreen" class="container invisible w-55">
             <!-- Logo Area -->
             <div class="LogoArea text-center">
                 <img id="logoIMG" class="img4" src="resources/images/logo_1.png" alt="Image of Rock Paper Scissor Logo" height="150" width="200">
@@ -25,7 +25,7 @@
             <!-- Play area -->
             <div class="row">
                 <!-- Player Side -->
-                <div class="PlayerArea col-lg-3">
+                <div class="PlayerArea col-md-3">
                     <h2>Player Score: </h2>
                     <h2 id="pScore">0</h2>
                     <div class="progress">
@@ -41,7 +41,7 @@
                     <button class="btn" id="scissorButton" onclick="imageClick(3)"><img src="resources/images/3.png" alt="Scissors" width="50" height="50">Scissor</button>
                 </div>
                 <!-- Middle Images Area -->
-                <div class="imageArea col-lg-6">
+                <div class="imageArea col-md-6">
                     <br /><br /><br />
                     <div class="row">
                         <div class="col-sm-6">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <!-- AI Side -->
-                <div class="AIArea col-lg-3 text-right">
+                <div class="AIArea col-md-3 text-right">
                     <h2>AI Score: </h2>
                     <h2 id="aiScore">0</h2>
                     <div class="progress">
